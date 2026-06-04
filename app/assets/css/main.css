@@ -1,0 +1,10 @@
+/* Estilos globais da aplicação */
+
+/* Garante que html e body ocupam toda a tela e permitem scroll vertical */
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;   /* bloqueia scroll horizontal em mobile */
+  overflow-y: auto;     /* permite scroll vertical normalmente */
+  scroll-behavior: smooth;
+}
