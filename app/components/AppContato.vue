@@ -38,7 +38,7 @@
           <!-- Nome da barbearia -->
           <div class="flex flex-col gap-1">
             <span class="text-amber text-xs font-semibold uppercase tracking-widest">Barbearia</span>
-            <span class="text-charcoal text-2xl font-bold">BRShop Barbearia</span>
+            <span class="text-charcoal text-2xl font-bold">Barbearia Premium</span>
           </div>
 
           <!-- Separador -->
@@ -83,7 +83,7 @@
             </span>
             <div class="flex flex-col gap-1">
               <span class="text-charcoal font-semibold">E-mail</span>
-              <span class="text-graphite">contato@brshop.com.br</span>
+              <span class="text-graphite">contato@barbeariapremium.com.br</span>
             </div>
           </div>
 
@@ -97,8 +97,8 @@
             </span>
             <div class="flex flex-col gap-1">
               <span class="text-charcoal font-semibold">Horário de funcionamento</span>
-              <span class="text-graphite">Segunda a Sexta: 09h às 20h</span>
-              <span class="text-graphite">Sábado: 09h às 18h</span>
+              <span class="text-graphite">Segunda a Sexta: 09h às 18h</span>
+              <span class="text-graphite">Sábado: 09h às 17h</span>
               <span class="text-sage text-sm">Domingo: Fechado</span>
             </div>
           </div>
