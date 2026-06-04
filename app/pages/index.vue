@@ -9,5 +9,8 @@
 
     <!-- Seção de serviços: grid com os cortes disponíveis e preços -->
     <AppServicos />
+
+    <!-- Seção de contato: informações e mapa de localização -->
+    <AppContato />
   </main>
 </template>

@@ -39,11 +39,22 @@
 
         <!-- Grupo de botões CTA usando o componente AppButton -->
         <div class="flex flex-wrap gap-4 mt-2">
-          <!-- Botão primário: ação principal de conversão -->
-          <AppButton variant="primary">Agendar agora</AppButton>
+          <!-- Botão primário: abre o WhatsApp da barbearia em nova aba -->
+          <AppButton
+            variant="primary"
+            href="https://wa.me/5527999999999"
+            target="_blank"
+          >
+            Agendar agora
+          </AppButton>
 
-          <!-- Botão outline: ação secundária de navegação -->
-          <AppButton variant="outline">Ver serviços</AppButton>
+          <!-- Botão outline: rola a página até a seção de serviços via âncora #servicos -->
+          <AppButton
+            variant="outline"
+            href="#servicos"
+          >
+            Ver serviços
+          </AppButton>
         </div>
 
       </div>

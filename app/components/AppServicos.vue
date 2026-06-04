@@ -5,7 +5,8 @@
     Fundo escuro (moss) para contrastar com a seção "Sobre" clara.
     Exibe os cortes disponíveis em grid usando o CardServico.
   ========================================================== -->
-  <section class="bg-moss py-24 px-6 lg:px-12">
+  <!-- id="servicos" permite que o botão "Ver serviços" do Hero role até aqui -->
+  <section id="servicos" class="bg-moss py-24 px-6 lg:px-12">
 
     <div class="max-w-7xl mx-auto flex flex-col gap-12">
 
