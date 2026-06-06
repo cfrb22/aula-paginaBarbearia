@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 // Configuração do Tailwind CSS
-// Define as cores customizadas da identidade visual da barbearia
+// Define as cores customizadas e as famílias de fonte da identidade visual da barbearia
 export default {
   content: [],
   theme: {
@@ -17,6 +17,13 @@ export default {
         graphite:       '#3D3D3D',  // Cinza grafite — cards da equipe, overlays de foto
         'amber-shadow': '#A0842D',  // Dourado sombra — hover e bordas douradas
         sage:           '#8F9A8F',  // Cinza sage — textos de suporte, subtítulos
+      },
+
+      fontFamily: {
+        // Fonte serifada para títulos e display — transmite elegância e tradição
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        // Fonte sans-serif para corpo de texto — limpeza e legibilidade
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       }
     }
   },

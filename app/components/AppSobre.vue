@@ -5,111 +5,104 @@
     Layout em duas colunas: texto à esquerda, imagem à direita.
     Fundo claro (cream) para contrastar com o hero escuro.
   ========================================================== -->
-  <section class="bg-cream py-24 px-6 lg:px-12">
+  <section class="bg-cream py-28 px-8 lg:px-16">
 
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
       <!-- ── Coluna esquerda: texto de apresentação ── -->
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-8">
 
-        <!-- Label de seção — identifica o bloco de conteúdo -->
-        <span class="text-amber text-xs font-semibold uppercase tracking-widest">
-          Sobre nós
-        </span>
+        <!-- Label com linha lateral -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-px bg-amber" />
+          <span class="text-amber text-xs font-sans font-medium uppercase tracking-[0.2em]">
+            Sobre nós
+          </span>
+        </div>
 
-        <!-- Título da seção -->
-        <h2 class="text-charcoal text-4xl lg:text-5xl font-bold leading-tight">
-          Tradição e maestria <br />
-          em cada <span class="text-moss">detalhe.</span>
+        <!-- Título serifado -->
+        <h2 class="font-display text-charcoal font-bold leading-[1.1]" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+          Tradição e maestria <br />em cada detalhe.
         </h2>
 
-        <!-- Texto de apresentação da barbearia -->
-        <p class="text-graphite text-lg leading-relaxed">
-          Fundada com a missão de oferecer mais do que um corte oferecemos uma experiência.
-          Nossa equipe é formada por profissionais apaixonados pela arte da barbearia,
-          combinando técnicas tradicionais com as tendências mais modernas do mercado.
-        </p>
+        <!-- Texto de apresentação -->
+        <div class="flex flex-col gap-4 max-w-lg">
+          <p class="text-graphite font-sans text-base leading-[1.8]">
+            Fundada com a missão de oferecer mais do que um corte — oferecemos uma experiência.
+            Nossa equipe é formada por profissionais apaixonados pela arte da barbearia,
+            combinando técnicas tradicionais com as tendências mais modernas do mercado.
+          </p>
+          <p class="text-graphite font-sans text-base leading-[1.8]">
+            Cada cliente é tratado com atenção única, porque acreditamos que um bom corte
+            começa com uma boa conversa.
+          </p>
+        </div>
 
-        <p class="text-graphite text-lg leading-relaxed">
-          Cada cliente que entra pela nossa porta é tratado com atenção única,
-          porque acreditamos que um bom corte começa com uma boa conversa.
-        </p>
-
-        <!-- Separador decorativo âmbar -->
-        <div class="w-16 h-1 bg-amber rounded-full" />
-
-        <!-- Destaques numéricos da barbearia -->
-        <div class="flex gap-10 mt-2">
-          <div class="flex flex-col gap-1">
-            <span class="text-moss text-3xl font-bold">+10</span>
-            <span class="text-sage text-sm">Anos de experiência</span>
+        <!-- Destaques numéricos — layout horizontal com divisores -->
+        <div class="flex gap-0 mt-2 border-t border-charcoal/10">
+          <div class="flex flex-col gap-1 pt-6 pr-10 border-r border-charcoal/10">
+            <span class="font-display text-moss text-4xl font-bold">+10</span>
+            <span class="text-sage font-sans text-xs uppercase tracking-widest">Anos</span>
           </div>
-          <div class="flex flex-col gap-1">
-            <span class="text-moss text-3xl font-bold">+5k</span>
-            <span class="text-sage text-sm">Clientes atendidos</span>
+          <div class="flex flex-col gap-1 pt-6 px-10 border-r border-charcoal/10">
+            <span class="font-display text-moss text-4xl font-bold">+5k</span>
+            <span class="text-sage font-sans text-xs uppercase tracking-widest">Clientes</span>
           </div>
-          <div class="flex flex-col gap-1">
-            <span class="text-moss text-3xl font-bold">98%</span>
-            <span class="text-sage text-sm">Satisfação</span>
+          <div class="flex flex-col gap-1 pt-6 pl-10">
+            <span class="font-display text-moss text-4xl font-bold">98%</span>
+            <span class="text-sage font-sans text-xs uppercase tracking-widest">Satisfação</span>
           </div>
         </div>
 
-        <!-- Subtítulo da lista de diferenciais -->
-        <h3 class="text-charcoal text-lg font-semibold mt-2">Nossos diferenciais:</h3>
-
-        <!-- Diferenciais da barbearia — listados com ícone de check âmbar -->
-        <ul class="flex flex-col gap-3 mt-4">
-          <li class="flex items-center gap-3 text-graphite">
-            <span class="w-5 h-5 rounded-full bg-amber flex items-center justify-center shrink-0">
-              <svg class="w-3 h-3 text-charcoal" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-            </span>
-            Atendimento personalizado para cada cliente
-          </li>
-          <li class="flex items-center gap-3 text-graphite">
-            <span class="w-5 h-5 rounded-full bg-amber flex items-center justify-center shrink-0">
-              <svg class="w-3 h-3 text-charcoal" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-            </span>
-            Profissionais certificados e em constante atualização
-          </li>
-          <li class="flex items-center gap-3 text-graphite">
-            <span class="w-5 h-5 rounded-full bg-amber flex items-center justify-center shrink-0">
-              <svg class="w-3 h-3 text-charcoal" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-            </span>
-            Produtos premium nacionais e importados
-          </li>
-          <li class="flex items-center gap-3 text-graphite">
-            <span class="w-5 h-5 rounded-full bg-amber flex items-center justify-center shrink-0">
-              <svg class="w-3 h-3 text-charcoal" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-            </span>
-            Ambiente exclusivo e agendamento sem filas
-          </li>
-        </ul>
+        <!-- Diferenciais — estilo minimalista com traço em vez de ícone circular -->
+        <div class="flex flex-col gap-0 mt-2">
+          <p class="text-charcoal font-sans text-xs font-semibold uppercase tracking-[0.15em] mb-4">
+            Nossos diferenciais
+          </p>
+          <ul class="flex flex-col">
+            <li class="flex items-center gap-4 py-3 border-b border-charcoal/8 text-graphite font-sans text-sm">
+              <span class="w-4 h-px bg-amber shrink-0" />
+              Atendimento personalizado para cada cliente
+            </li>
+            <li class="flex items-center gap-4 py-3 border-b border-charcoal/8 text-graphite font-sans text-sm">
+              <span class="w-4 h-px bg-amber shrink-0" />
+              Profissionais certificados e em constante atualização
+            </li>
+            <li class="flex items-center gap-4 py-3 border-b border-charcoal/8 text-graphite font-sans text-sm">
+              <span class="w-4 h-px bg-amber shrink-0" />
+              Produtos premium nacionais e importados
+            </li>
+            <li class="flex items-center gap-4 py-3 text-graphite font-sans text-sm">
+              <span class="w-4 h-px bg-amber shrink-0" />
+              Ambiente exclusivo e agendamento sem filas
+            </li>
+          </ul>
+        </div>
 
       </div>
 
       <!-- ── Coluna direita: imagem da fachada ── -->
       <div class="flex items-center justify-center">
 
-        <!-- Wrapper: tamanho definido pela imagem, moldura posicionada relativa a ele -->
         <div class="relative shrink-0">
 
-          <!-- Moldura decorativa âmbar em volta da imagem -->
-          <div class="absolute inset-0 border-2 border-amber opacity-30 rounded-2xl" />
+          <!-- Bloco de cor sólida deslocado — cria profundidade sem efeito genérico -->
+          <div class="absolute -top-4 -left-4 w-full h-full rounded-2xl bg-moss/15" />
 
-          <!-- Imagem da fachada — proporção retrato (largura menor que altura), ratio 3:4 -->
+          <!-- Imagem da fachada — proporção retrato 3:4 -->
           <img
             src="/imagens/frente.jpg"
             alt="Fachada da barbearia"
-            class="block w-[480px] h-[640px] max-w-full object-cover object-center rounded-2xl"
+            class="relative block w-[440px] h-[580px] max-w-full object-cover object-center rounded-2xl"
+            style="box-shadow: 0 24px 60px rgba(44,59,45,0.2);"
           />
+
+          <!-- Tag flutuante de credencial — detalhe humano -->
+          <div class="absolute -bottom-5 -left-5 bg-moss text-cream font-sans text-xs px-5 py-3 rounded-xl flex flex-col gap-0.5"
+            style="box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+            <span class="text-amber font-semibold tracking-wider uppercase text-[10px]">Desde</span>
+            <span class="font-display text-xl font-bold">2014</span>
+          </div>
 
         </div>
 
