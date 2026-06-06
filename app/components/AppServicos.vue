@@ -36,20 +36,32 @@
 
       </div>
 
-      <!-- Grid de cards — 4 colunas no desktop, 2 no tablet, 1 no mobile -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Rolagem horizontal no mobile/tablet — grid de 4 colunas apenas no desktop -->
+      <!-- -mx-8 px-8 estende a área de scroll até as bordas da tela no mobile -->
+      <div class="cards-scroll flex gap-4 overflow-x-auto pb-4 -mx-8 px-8 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0">
+
+        <!-- Cada card tem largura fixa no mobile para a rolagem funcionar bem -->
+        <!-- No desktop o lg:w-full deixa o grid controlar a largura -->
 
         <!-- Card: Buzz Cut com Fade -->
-        <CardServico imagem="/imagens/Buzz Cut com Fade.jpg" nome="Buzz Cut com Fade" preco="45,00" />
+        <div class="shrink-0 w-[72vw] max-w-[280px] snap-start lg:w-full lg:max-w-full">
+          <CardServico imagem="/imagens/Buzz Cut com Fade.jpg" nome="Buzz Cut com Fade" preco="45,00" />
+        </div>
 
         <!-- Card: Low Taper Fade -->
-        <CardServico imagem="/imagens/Low Taper Fade.jpg" nome="Low Taper Fade" preco="55,00" />
+        <div class="shrink-0 w-[72vw] max-w-[280px] snap-start lg:w-full lg:max-w-full">
+          <CardServico imagem="/imagens/Low Taper Fade.jpg" nome="Low Taper Fade" preco="55,00" />
+        </div>
 
         <!-- Card: Modern Mullet -->
-        <CardServico imagem="/imagens/Modern Mullet.jpg" nome="Modern Mullet" preco="60,00" />
+        <div class="shrink-0 w-[72vw] max-w-[280px] snap-start lg:w-full lg:max-w-full">
+          <CardServico imagem="/imagens/Modern Mullet.jpg" nome="Modern Mullet" preco="60,00" />
+        </div>
 
         <!-- Card: Textured Crop -->
-        <CardServico imagem="/imagens/Textured Crop.jpg" nome="Textured Crop" preco="50,00" />
+        <div class="shrink-0 w-[72vw] max-w-[280px] snap-start lg:w-full lg:max-w-full">
+          <CardServico imagem="/imagens/Textured Crop.jpg" nome="Textured Crop" preco="50,00" />
+        </div>
 
       </div>
 
@@ -120,6 +132,10 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+/* Esconde a scrollbar mas mantém a funcionalidade de rolagem horizontal */
+.cards-scroll::-webkit-scrollbar { display: none; }
+.cards-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Cursor âmbar piscante para fundo escuro (seção de serviços) */
 .cursor-blink-claro {
   display: inline-block;
