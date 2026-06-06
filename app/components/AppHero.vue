@@ -17,7 +17,26 @@
     <div class="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-16 py-28 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
       <!-- ── Coluna esquerda: texto ── -->
-      <div class="flex flex-col gap-7">
+      <!-- overflow-hidden garante que a máquina de fundo não vaze para fora da coluna -->
+      <div class="relative flex flex-col overflow-hidden">
+
+        <!-- Máquina de corte vintage — fundo decorativo, -28° de ângulo, aparece ao carregar -->
+        <!-- mix-blend-mode: screen faz partes escuras desaparecerem no fundo dark do hero -->
+        <img
+          src="/imagens/maquina_barbearia_comprimida.webp"
+          alt=""
+          aria-hidden="true"
+          class="absolute pointer-events-none select-none maquina-fundo"
+          style="
+            top: 50%; left: 50%;
+            height: 115%; width: auto; max-width: none;
+            transform: translate(-50%, -50%) rotate(-28deg);
+            mix-blend-mode: screen;
+          "
+        />
+
+        <!-- Conteúdo textual acima da imagem de fundo -->
+        <div class="relative z-10 flex flex-col gap-7">
 
         <!-- Label editorial -->
         <div class="flex items-center gap-3">
@@ -70,7 +89,9 @@
           Est. 2014 &nbsp;·&nbsp; Espírito Santo
         </p>
 
-      </div>
+        </div><!-- fim do wrapper de conteúdo z-10 -->
+
+      </div><!-- fim da coluna esquerda -->
 
       <!-- ── Coluna direita: imagem 3D ── -->
       <div class="flex items-center justify-end">
@@ -92,19 +113,6 @@
             alt="Barbeiro realizando corte de cabelo no cliente"
             class="relative block w-[460px] h-[460px] max-w-full object-cover object-center rounded-2xl hero-img-entrada"
             style="box-shadow: 0 32px 80px rgba(0,0,0,0.5);"
-          />
-
-          <!-- Máquina de corte vintage — entra junto com a foto, angulada para direita -->
-          <!-- Posicionada no canto inferior esquerdo, inclinada -28° para look editorial -->
-          <img
-            src="/imagens/maquina_barbearia_comprimida.webp"
-            alt="Máquina de corte vintage"
-            class="absolute -bottom-10 -left-20 w-[165px] rounded-xl maquina-composicao"
-            style="
-              transform: rotate(-28deg);
-              box-shadow: 0 20px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(201,168,76,0.12);
-              z-index: 10;
-            "
           />
 
         </div>
@@ -238,19 +246,15 @@ const onMouseLeave = () => {
   will-change: transform;
 }
 
-/* Máquina: entra deslizando de baixo junto com a foto, com delay após a foto aparecer */
-.maquina-composicao {
-  animation: entrada-maquina 1s cubic-bezier(0.23, 1, 0.32, 1) 1s both;
+/* Máquina de fundo: revela ao carregar a página com fade + drift leve */
+/* Delay de 0.4s para aparecer assim que a página abre, antes da digitação terminar */
+.maquina-fundo {
+  animation: revelar-maquina 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
 
-@keyframes entrada-maquina {
-  from {
-    opacity: 0;
-    transform: rotate(-28deg) translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(-28deg) translateY(0px);
-  }
+@keyframes revelar-maquina {
+  0%   { opacity: 0;    transform: translate(-50%, -50%) rotate(-28deg) scale(0.88); }
+  60%  { opacity: 0.11; transform: translate(-50%, -50%) rotate(-28deg) scale(1.01); }
+  100% { opacity: 0.09; transform: translate(-50%, -50%) rotate(-28deg) scale(1);    }
 }
 </style>
