@@ -17,58 +17,73 @@
     <div class="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-16 py-28 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
       <!-- ── Coluna esquerda: texto ── -->
-      <div class="flex flex-col gap-7">
+      <!-- overflow-hidden recorta a imagem de fundo que extrapola os limites -->
+      <div class="relative flex flex-col overflow-hidden">
 
-        <!-- Label editorial -->
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-px bg-amber" />
-          <span class="text-amber text-xs font-sans font-medium uppercase tracking-[0.2em]">
-            Barbearia Premium
-          </span>
+        <!-- Imagem da máquina rotacionada 90° — fica por trás de todo o conteúdo textual -->
+        <img
+          src="/imagens/maquina_barbearia_comprimida.webp"
+          alt=""
+          aria-hidden="true"
+          class="absolute pointer-events-none select-none"
+          style="top: 50%; left: 50%; height: 118%; width: auto; max-width: none; transform: translate(-50%, -50%) rotate(90deg); opacity: 0.09; mix-blend-mode: screen;"
+        />
+
+        <!-- Conteúdo em z-10 para flutuar sobre a imagem de fundo -->
+        <div class="relative z-10 flex flex-col gap-7">
+
+          <!-- Label editorial -->
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-px bg-amber" />
+            <span class="text-amber text-xs font-sans font-medium uppercase tracking-[0.2em]">
+              Barbearia Premium
+            </span>
+          </div>
+
+          <!-- Título com efeito de digitação — cada linha aparece progressivamente -->
+          <h1 class="font-display text-cream font-bold leading-[1.1]" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+            <!-- Linha 1: texto normal creme -->
+            <span class="block min-h-[1.1em]">
+              {{ linhas[0] }}<span v-if="linhaAtual === 0" class="cursor-blink">|</span>
+            </span>
+            <!-- Linha 2: destaque em âmbar itálico -->
+            <em class="text-amber not-italic block min-h-[1.1em]">
+              {{ linhas[1] }}<span v-if="linhaAtual === 1" class="cursor-blink">|</span>
+            </em>
+            <!-- Linha 3: texto normal creme -->
+            <span class="block min-h-[1.1em]">
+              {{ linhas[2] }}<span v-if="linhaAtual === 2" class="cursor-blink">|</span>
+            </span>
+          </h1>
+
+          <!-- Divisor — aparece após digitação terminar -->
+          <div class="w-12 h-px bg-amber/40 transition-opacity duration-500" :class="digitacaoConcluida ? 'opacity-100' : 'opacity-0'" />
+
+          <!-- Subtexto — aparece após digitação terminar -->
+          <p class="text-sage font-sans text-base leading-[1.8] max-w-sm transition-all duration-700"
+            :class="digitacaoConcluida ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
+            Tradição, precisão e estilo em cada atendimento.
+            Agende agora e sinta a diferença de um serviço feito com maestria.
+          </p>
+
+          <!-- Botões — aparecem após digitação terminar -->
+          <div class="flex flex-wrap gap-3 mt-1 transition-all duration-700 delay-200"
+            :class="digitacaoConcluida ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
+            <AppButton variant="primary" href="https://wa.me/5527999999999" target="_blank">
+              Agendar agora
+            </AppButton>
+            <AppButton variant="outline" href="#servicos">
+              Ver serviços
+            </AppButton>
+          </div>
+
+          <!-- Credencial -->
+          <p class="text-sage/50 font-sans text-xs tracking-widest uppercase mt-2 transition-opacity duration-700 delay-300"
+            :class="digitacaoConcluida ? 'opacity-100' : 'opacity-0'">
+            Est. 2014 &nbsp;·&nbsp; Espírito Santo
+          </p>
+
         </div>
-
-        <!-- Título com efeito de digitação — cada linha aparece progressivamente -->
-        <h1 class="font-display text-cream font-bold leading-[1.1]" style="font-size: clamp(2.5rem, 5vw, 4rem);">
-          <!-- Linha 1: texto normal creme -->
-          <span class="block min-h-[1.1em]">
-            {{ linhas[0] }}<span v-if="linhaAtual === 0" class="cursor-blink">|</span>
-          </span>
-          <!-- Linha 2: destaque em âmbar itálico -->
-          <em class="text-amber not-italic block min-h-[1.1em]">
-            {{ linhas[1] }}<span v-if="linhaAtual === 1" class="cursor-blink">|</span>
-          </em>
-          <!-- Linha 3: texto normal creme -->
-          <span class="block min-h-[1.1em]">
-            {{ linhas[2] }}<span v-if="linhaAtual === 2" class="cursor-blink">|</span>
-          </span>
-        </h1>
-
-        <!-- Divisor — aparece após digitação terminar -->
-        <div class="w-12 h-px bg-amber/40 transition-opacity duration-500" :class="digitacaoConcluida ? 'opacity-100' : 'opacity-0'" />
-
-        <!-- Subtexto — aparece após digitação terminar -->
-        <p class="text-sage font-sans text-base leading-[1.8] max-w-sm transition-all duration-700"
-          :class="digitacaoConcluida ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
-          Tradição, precisão e estilo em cada atendimento.
-          Agende agora e sinta a diferença de um serviço feito com maestria.
-        </p>
-
-        <!-- Botões — aparecem após digitação terminar -->
-        <div class="flex flex-wrap gap-3 mt-1 transition-all duration-700 delay-200"
-          :class="digitacaoConcluida ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
-          <AppButton variant="primary" href="https://wa.me/5527999999999" target="_blank">
-            Agendar agora
-          </AppButton>
-          <AppButton variant="outline" href="#servicos">
-            Ver serviços
-          </AppButton>
-        </div>
-
-        <!-- Credencial -->
-        <p class="text-sage/50 font-sans text-xs tracking-widest uppercase mt-2 transition-opacity duration-700 delay-300"
-          :class="digitacaoConcluida ? 'opacity-100' : 'opacity-0'">
-          Est. 2014 &nbsp;·&nbsp; Espírito Santo
-        </p>
 
       </div>
 
@@ -92,14 +107,6 @@
             alt="Barbeiro realizando corte de cabelo no cliente"
             class="relative block w-[460px] h-[460px] max-w-full object-cover object-center rounded-2xl hero-img-entrada"
             style="box-shadow: 0 32px 80px rgba(0,0,0,0.5);"
-          />
-
-          <!-- Máquina vintage flutuando no canto inferior esquerdo — detalhe de ofício -->
-          <img
-            src="/imagens/maquina-vintage.svg"
-            alt="Máquina de corte vintage"
-            class="absolute -bottom-10 -left-14 w-[90px] opacity-90 maquina-flutuante"
-            style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));"
           />
 
         </div>
@@ -231,28 +238,5 @@ const onMouseLeave = () => {
 .hero-3d-wrapper {
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-/* Máquina vintage: entra deslizando de baixo com delay, depois flutua suavemente */
-.maquina-flutuante {
-  animation:
-    entrada-maquina 1s cubic-bezier(0.23, 1, 0.32, 1) 1.5s both,
-    flutuacao 4s ease-in-out 2.6s infinite;
-}
-
-@keyframes entrada-maquina {
-  from {
-    opacity: 0;
-    transform: translateY(30px) rotate(-8deg);
-  }
-  to {
-    opacity: 0.9;
-    transform: translateY(0px) rotate(-8deg);
-  }
-}
-
-@keyframes flutuacao {
-  0%,  100% { transform: translateY(0px)   rotate(-8deg); }
-  50%        { transform: translateY(-8px)  rotate(-8deg); }
 }
 </style>
