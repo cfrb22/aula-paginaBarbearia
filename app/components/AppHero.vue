@@ -94,6 +94,14 @@
             style="box-shadow: 0 32px 80px rgba(0,0,0,0.5);"
           />
 
+          <!-- Máquina vintage flutuando no canto inferior esquerdo — detalhe de ofício -->
+          <img
+            src="/imagens/maquina-vintage.svg"
+            alt="Máquina de corte vintage"
+            class="absolute -bottom-10 -left-14 w-[90px] opacity-90 maquina-flutuante"
+            style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));"
+          />
+
         </div>
 
       </div>
@@ -223,5 +231,28 @@ const onMouseLeave = () => {
 .hero-3d-wrapper {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+/* Máquina vintage: entra deslizando de baixo com delay, depois flutua suavemente */
+.maquina-flutuante {
+  animation:
+    entrada-maquina 1s cubic-bezier(0.23, 1, 0.32, 1) 1.5s both,
+    flutuacao 4s ease-in-out 2.6s infinite;
+}
+
+@keyframes entrada-maquina {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-8deg);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0px) rotate(-8deg);
+  }
+}
+
+@keyframes flutuacao {
+  0%,  100% { transform: translateY(0px)   rotate(-8deg); }
+  50%        { transform: translateY(-8px)  rotate(-8deg); }
 }
 </style>

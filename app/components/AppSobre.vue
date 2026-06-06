@@ -4,8 +4,9 @@
     Seção "Sobre Nós" da landing page.
     Layout em duas colunas: texto à esquerda, imagem à direita.
     Fundo claro (cream) para contrastar com o hero escuro.
+    Efeito: digitação progressiva no título ao entrar na viewport.
   ========================================================== -->
-  <section class="bg-cream py-28 px-8 lg:px-16">
+  <section ref="secaoRef" class="bg-cream py-28 px-8 lg:px-16">
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
@@ -20,9 +21,16 @@
           </span>
         </div>
 
-        <!-- Título serifado -->
+        <!-- Título com efeito de digitação — ativado ao entrar na viewport -->
         <h2 class="font-display text-charcoal font-bold leading-[1.1]" style="font-size: clamp(2rem, 4vw, 3.25rem);">
-          Tradição e maestria <br />em cada detalhe.
+          <!-- Linha 1 -->
+          <span class="block min-h-[1.15em]">
+            {{ linhas[0] }}<span v-if="linhaAtual === 0" class="cursor-blink-escuro">|</span>
+          </span>
+          <!-- Linha 2: itálica com cor âmbar para destaque -->
+          <em class="text-amber not-italic block min-h-[1.15em]">
+            {{ linhas[1] }}<span v-if="linhaAtual === 1" class="cursor-blink-escuro">|</span>
+          </em>
         </h2>
 
         <!-- Texto de apresentação -->
@@ -57,7 +65,7 @@
         <!-- Diferenciais — estilo minimalista com traço em vez de ícone circular -->
         <div class="flex flex-col gap-0 mt-2">
           <p class="text-charcoal font-sans text-xs font-semibold uppercase tracking-[0.15em] mb-4">
-            Nossos diferenciais
+            Nossos diferenciais:
           </p>
           <ul class="flex flex-col">
             <li class="flex items-center gap-4 py-3 border-b border-charcoal/8 text-graphite font-sans text-sm">
@@ -112,3 +120,84 @@
 
   </section>
 </template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+// ── Efeito de digitação ativado por IntersectionObserver ──────────
+
+// Referência ao elemento <section> para observar visibilidade
+const secaoRef = ref(null)
+
+// Textos de cada linha do título
+const textos = ['Tradição e maestria', 'em cada detalhe.']
+
+// Linhas exibidas progressivamente
+const linhas = ref(['', ''])
+
+// Índice da linha sendo digitada (-1 = concluído)
+const linhaAtual = ref(-1)
+
+// Garante que a animação dispare apenas uma vez
+const animacaoIniciada = ref(false)
+
+let observer = null
+
+const iniciarDigitacao = () => {
+  let linha = 0
+  let char = 0
+  linhaAtual.value = 0
+
+  const digitar = () => {
+    if (linha >= textos.length) {
+      linhaAtual.value = -1
+      return
+    }
+    if (char <= textos[linha].length) {
+      linhas.value[linha] = textos[linha].slice(0, char)
+      char++
+      setTimeout(digitar, 60)
+    } else {
+      char = 0
+      linha++
+      linhaAtual.value = linha
+      setTimeout(digitar, 220)
+    }
+  }
+
+  setTimeout(digitar, 200)
+}
+
+onMounted(() => {
+  // IntersectionObserver: inicia digitação quando a seção entra ~30% na tela
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && !animacaoIniciada.value) {
+        animacaoIniciada.value = true
+        iniciarDigitacao()
+      }
+    },
+    { threshold: 0.3 }
+  )
+  if (secaoRef.value) observer.observe(secaoRef.value)
+})
+
+onBeforeUnmount(() => {
+  if (observer) observer.disconnect()
+})
+</script>
+
+<style scoped>
+/* Cursor âmbar piscante para fundo claro (seção sobre) */
+.cursor-blink-escuro {
+  display: inline-block;
+  color: #C9A84C;
+  animation: piscar-escuro 0.8s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes piscar-escuro {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+</style>

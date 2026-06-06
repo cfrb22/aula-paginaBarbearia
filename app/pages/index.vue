@@ -14,3 +14,15 @@
     <AppContato />
   </main>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+
+// Impede que o browser restaure o scroll da visita anterior e força topo
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    history.scrollRestoration = 'manual'
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+})
+</script>
